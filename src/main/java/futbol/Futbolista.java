@@ -21,12 +21,13 @@ public abstract class Futbolista implements Comparable<Object> {
         return "El futbolista " + getNombre() + " tiene " + getEdad() + ", y juega de " + getPosicion();
     }
 
-    public boolean equals(Futbolista f) {
-        if (this == f) return true;
-        
-        if (f == null) return false;
-        
-        return this.edad == f.edad && this.nombre.equals(f.nombre) && this.posicion.equals(f.posicion);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;  // Verifica si es el mismo objeto
+        if (obj == null || getClass() != obj.getClass()) return false;  // Verifica si el objeto es null o si no son de la misma clase
+
+        Futbolista f = (Futbolista) obj;
+        return edad == f.edad && nombre.equals(f.nombre) && posicion.equals(f.posicion);
     }
 
     public abstract boolean jugarConLasManos();
